@@ -75,6 +75,15 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     <span v-if="errors.state" class="text-danger">{{ errors.state }}</span>
                 </div>
             </div>
+            <!-- Codigo Postal                      -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="codigopostal">Código Postal</label>
+                    <input type="text" v-model="formData.codigopostal" class="form-control" id="codigopostal" placeholder="5 dígitos"
+                        required>
+                    <span v-if="errors.codigopostal" class="text-danger">{{ errors.codigopostal }}</span>
+                </div>
+            </div>
             <!-- Teléfono o WhatsApp -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
@@ -147,10 +156,11 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     <span v-if="errors.name_negocio" class="text-danger">{{ errors.last_name }}</span>
                 </div>
             </div>
+            
             <div class="col-md-12">
                 <div class="form-group">
-                    <label class="px-3" for="dateCourse">Fecha de taller "actualización de bebidas en el Cedis de
-                        Mérida"</label>
+                    <label class="px-3" for="dateCourse">Fecha de taller "actualización de bebidas en el Cedis de Monterrey
+                        "</label>
                     <select class="form-control px-3" id="dateCourse" v-model="formData.dateCourse">
                         <option value="">Selecciona una fecha</option>
                         <option value="cafeteria">Viernes 4 abril | 10 a.m.</option>
@@ -159,10 +169,34 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     </select>
                 </div>
             </div>
+            
+            <!-- Especificaciones                     
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="especifica">Especificaciones</label>
+                    <input type="text" v-model="formData.especipica" class="form-control" id="especifica" placeholder="Ingrese sus especificaciones"
+                        required>
+                    <span v-if="errors.especifica" class="text-danger">{{ errors.codigopostal }}</span>
+                </div>
+            </div> 
+
+             -->
+            <!-- Observaciones                      -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="codigopostal">Observaciones</label>
+                    <textarea  v-model="formData.observaciones" class="form-control" id="observaciones" placeholder="Comentarios"
+                        required>
+                    </textarea>
+                    <span v-if="errors.observaciones" sclass="text-danger">{{ errors.observaciones }}</span>
+                </div>
+            </div>
+
+
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-6">
-                        <!-- Botón de enviar -->
+                        <!-- Checkbox de suscribirse Newsletter -->
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="inputNewsletter"
                                 v-model="formData.newsletter" checked>
@@ -182,170 +216,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
         </form>
     </div>
 
-    <!-- 
-
-
-                <div class="container my-4">
-                    <div class="progress" role="progressbar" aria-label="Info striped example" aria-valuenow="0"
-                        aria-valuemin="0" aria-valuemax="100">
-                        <div id="progress-bar" class="progress-bar bg-warning text-dark" style="width: 0%"></div>
-                    </div>
-                <div class="mb-3">
-                <label for="select" class="form-label">¿Cómo te enteraste de la Expo?</label>
-                <select class="form-select" id="inputExpo" aria-label="Default select example">
-                    <option selected>Elige una opción</option>
-                    <option value="1">A través de redes sociales (Facebook, Twitter, Instagram, etc.).</option>
-                    <option value="2">Por recomendación de un amigo o familiar.</option>
-                    <option value="3">Por correo electrónico o boletín informativo.</option>
-                    <option value="4">Por medio de un anuncio en revista.</option>
-                    <option value="5">A través de un sitio web o búsqueda en internet.</option>
-                    <option value="6">Otro</option>
-                </select>
-            </div>
-
-           <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="inputTaller" class="form-label pt-2">¿Qué curso tomaste?</label>
-                        <select class="form-select" id="inputTaller" name="inputTaller" aria-label="Default select example">
-                            <option selected>Elige una opción</option>
-                            <option value="1">EL FUTURO DEL TOSTADO DE CAFÉ EFICIENCIA Y SABOR EN ARMONIA</option>
-                            <option value="2">QUE EQUIPOS DEBO INCLUIR PARA ARRANCAR MI NEGOCIO</option>
-                            <option value="3">TALLER AVANZADO EXPLORA EL FACINANTE  MUNDO DEL BOBBA, CONCEPTOS, EQUIPOS E INSUMOS</option>
-                            <option value="4">APERTURA DE BARRA BUBBLE TEA "UNA NUEVA GENERACIÓN DE CONSUMO, NUEVAS TEXTURAS  Y FORMAS DE PREPARAR</option>
-                            <option value="5">EXPERIENCIAS DE CAFÉ  CON MIXOLOGIA CREATIVA PARA TU BARRA</option>
-                            <option value="6">SABORES DE PRIMAVERA "COMO COSTEAR, APRENDER Y PREPARAR LAS BEBIDAS DE TEMPORADA"</option>
-                            <option value="6"> VIAJE AL CORAZON DEL CAFÉ DE ESPECIALIDAD INNOVACIÓN EN PROCESOS.</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="inputDate" class="form-label pt-2">Elige la fecha</label>
-                        <select class="form-select" id="inputDate" name="inputDate" aria-label="Default select example">
-                            <option selected>Elige una opción</option>
-                            <option value="1">13 de marzo</option>
-                            <option value="2">14 de marzo</option>
-                            <option value="3">15 de marzo</option>
-                        
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="inputEmail" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="inputEmail" name="inputEmail"
-                            placeholder="Ingresa tu correo electrónico" required>
-                        <div id="emailHelp" class="form-text">No compartiremos tu correo electrónico con nadie.</div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="inputTelefono" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="inputTelefono"  name="inputTelefono" placeholder="Ingresa tu teléfono">
-                    </div>
-                </div>
-
-
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="inputNombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Ingresa tu nombre"
-                            required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
-                            title="Por favor ingresa un nombre válido (solo letras y espacios)">
-                    </div>
-                </div> -->
-
-
-    <!-- <div class="col-md-12">
-                    <div class="mb-3">
-                        <label for="select" class="form-label">¿Cuál es tu módelo de negocio?</label>
-                        <select class="form-select" id="inputExpo" aria-label="Default select example">
-                            <option selected>Elige una opción</option>
-                            <option value="1">Cafetería convencional</option>
-                            <option value="2">Cafetería de especialidad</option>
-                            <option value="3">Frappería</option>
-                            <option value="4">Mixología (Bar)</option>
-                            <option value="5">Negocio de Boba</option>
-                            <option value="6">Nevería</option>
-                            <option value="7">Hobbie</option>
-
-
-                            <option value="6">Otro</option>
-                        </select>
-                    </div>
-                </div> -->
-    <!-- <div class="col-md-12">
-                    <div class="mb-3" id="contenedor-especifica">
-                        <label for="textarea" class="form-label">Específica</label>
-                        <textarea id="inputEspecifica" name="inputEspecifica" rows="4" class="form-control"></textarea>
-                    </div>
-                </div> -->
-    <!-- <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="inputCodigoPostal" class="form-label">Código Postal</label>
-                        <input type="text" class="form-control" id="inputCodigoPostal" name="inputCodigoPostal"
-                            placeholder="Ingresa tu código postal">
-                    </div>
-                </div>
-                <div class="col-md-6" id="container-colonia" style="display: none;">
-                    <div class="mb-3">
-                        <label for="inputColonia" class="form-label">Colonia</label>
-                        <select class="form-control" id="inputColonia">
-                            <option value="" disabled selected>Ingresa tu colonia</option>
-                            Las opciones se agregarán dinámicamente con JavaScript 
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6" id="container-municipio" style="display: none;">
-                    <div class="mb-3">
-                        <label for="inputMunicipio" class="form-label">Municipio</label>
-                        <input type="text" class="form-control" id="inputMunicipio" placeholder="Ingresa tu municipio">
-                    </div>
-                </div>
-                <div class="col-md-6" id="container-estado" style="display: none;">
-                    <div class="mb-3">
-                        <label for="inputEstado" class="form-label">Estado</label>
-                        <input type="text" class="form-control" id="inputEstado" placeholder="Ingresa tu estado">
-                    </div>
-                </div>
-                <div class="col-md-6" id="container-ciudad" style="display: none;">
-                    <div class="mb-3">
-                        <label for="inputCiudad" class="form-label">Ciudad</label>
-                        <input type="text" class="form-control" id="inputCiudad" placeholder="Ingresa tu ciudad">
-                    </div>
-                </div>
-                <div class="col-md-12 d-none">
-                    <div class="mb-3">
-                        <label for="inputObservaciones" class="form-label">Observaciones</label>
-                        <textarea class="form-control" id="inputObservaciones" rows="3"
-                            placeholder="Ingresa tus observaciones"></textarea>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="inputAvisoPrivacidad" checked>
-                        <label class="form-check-label" for="inputAvisoPrivacidad">¿Aceptas nuestro aviso de
-                            privacidad?</label>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="inputNewsletter" checked>
-                        <label class="form-check-label" for="inputNewsletter">Suscríbete a nuestro newsletter</label>
-                    </div>
-                </div>
-                <div class="col-md-12 text-center">
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary my-3">Enviar</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div> -->
 
     <footer class="container-fluid">
         <div class="text-center">
@@ -380,10 +250,12 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         phone: "",
                         email: "",
                         city: "",
+                        codigopostal: "",
                         state: "",
                         productos: [],
                         tipo_negocio: "",
                         name_negocio: "",
+                        observaciones: "",
                         newsletter: true,
                         dateCourse: "",
                     },
