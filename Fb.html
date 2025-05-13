@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+</head>
+<style> 
+.fb_iframe_widget iframe {
+      position: relative!important;
+}
+
+.fb_iframe_widget_fluid {
+    display: inline-block !important;
+}
+ </style>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <!-- Load the JS SDK asynchronously -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+<script>
+
+    function statusChangeCallback(response) {
+      console.log('statusChangeCallback');
+      console.log(response);
+      if (response.status === 'connected') {
+        testAPI();
+  
+      } else if (response.status === 'not_authorized') {
+        FB.login(function(response) {
+          statusChangeCallback2(response);
+        }, {scope: 'public_profile,email'});
+  
+      } else {
+        alert("not connected, not logged into facebook, we don't know");
+      }
+    }
+  
+    function statusChangeCallback2(response) {
+      console.log('statusChangeCallback2');
+      console.log(response);
+      if (response.status === 'connected') {
+        testAPI();
+  
+      } else if (response.status === 'not_authorized') {
+        console.log('still not authorized!');
+  
+      } else {
+        alert("not connected, not logged into facebook, we don't know");
+      }
+    }
+  
+    function checkLoginState() {
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+    }
+  
+    function testAPI() {
+      console.log('Welcome!  Fetching your information.... ');
+      FB.api('/me', function(response) {
+        console.log('Successful login for: ' + response.name);
+        document.getElementById('status').innerHTML =
+          'Thanks for logging in, ' + response.name + '!';
+      });
+    }
+  
+    $(document).ready(function() {
+      FB.init({
+        appId      : '714583916788239',
+        xfbml      : true,
+        version    : 'v16.0'
+      });
+      checkLoginState();
+    });
+  </script>
+
+
+
+<!-- The JS SDK Login Button -->
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" style="
+       display : none !important">
+</fb:login-button>
+<div id="spinner"
+    style="
+        background: #4267b2;
+        border-radius: 5px;
+        color: white;
+        height: 40px;
+        text-align: center;
+        width: 250px;">
+    
+    <div
+    class="fb-login-button"
+    data-max-rows="1"
+    data-size="large"
+    data-button-type="continue_with"
+    data-use-continue-as="true"
+    ></div>
+<div id="status">
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <title>Expo Proveedores del Restaurante en Monterrey</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js
+"></script>
+    <link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
+" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5549375.js"></script>
+    <link href="style.css/?v=2.00000001" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="https://cafeetrusca.com/" target="_blank">
+                    <img src="/assets/logo_etruscab.png" alt="Logo Café Etrusca" id="logo" width="50px"
+                        class="img-fluid">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="pt-2 px-2 text-center">Expo Proveedores del Restaurante en Monterrey 2025</h1>
+        <!-- <h2 class="pt-0 px-2 text-center"> Experiencia sensorial </h2> -->
+    </div>
+    <div class="container my-4" id="app">
+        <form id="myForm" name="expo" method="post">
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="first_name">Nombre</label>
+                    <input type="text" v-model="formData.first_name" class="form-control" id="first_name"
+                        placeholder="Ingresa tu nombre" required>
+                    <span v-if="errors.first_name" class="text-danger">{{ errors.first_name }}</span>
+                </div>
+            </div>
+            <!-- Apellido -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="last_name">Apellidos</label>
+                    <input type="text" v-model="formData.last_name" class="form-control" id="last_name"
+                        placeholder="Ingresa tu apellido" required>
+                    <span v-if="errors.last_name" class="text-danger">{{ errors.last_name }}</span>
+                </div>
+            </div>
+            <!-- City -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="city">Ciudad</label>
+                    <input type="text" v-model="formData.city" class="form-control" id="city" placeholder="Ciudad"
+                        required>
+                    <span v-if="errors.city" class="text-danger">{{ errors.city }}</span>
+                </div>
+            </div>
+            <!-- State -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="state">Estado</label>
+                    <input type="text" v-model="formData.state" class="form-control" id="state" placeholder="Estado"
+                        required>
+                    <span v-if="errors.state" class="text-danger">{{ errors.state }}</span>
+                </div>
+            </div>
+            <!-- Teléfono o WhatsApp -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="phone">Teléfono o WhatsApp</label>
+                    <input type="tel" v-model="formData.phone" class="form-control" id="phone" placeholder="10 dígitos"
+                        pattern="[0-9]{10}" required>
+                    <small class="form-text text-muted">Debe contener 10 números</small>
+                    <span v-if="errors.phone" class="text-danger">{{ errors.phone }}</span>
+                </div>
+            </div>
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="phone">Correo Electrónico</label>
+                    <input type="email" v-model="formData.email" class="form-control" id="email" placeholder="email"
+                        required>
+                    <small class="form-text text-muted"></small>
+                    <span v-if="errors.email" class="text-danger">{{ errors.email }}</span>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <!-- Curso o taller -->
+                <div class="form-group">
+                    <h4 class="px-3">Productos de interés</h4>
+                    <div class="mx-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="insumos" name="insumos">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Insumos</label>
+                    </div>
+                    <div class="mx-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="accesorios" name="accesorios">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Accesorios</label>
+                    </div>
+                    <div class="mx-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="maquinas" name="maquinas">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Máquinas</label>
+                    </div>
+                    <div class="mx-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="cursos" id="cursos">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Cursos y
+                            talleres</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <!-- Tipo de sector -->
+                <div class="form-group">
+                    <h4 class="px-3">Información de negocio</h4>
+                    <label class="px-3" for="ifNegocio">¿Tienes un negocio?</label>
+                    <select class="form-control px-3" id="ifNegocio" v-model="formData.ifNegocio" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="cafeteria">Sí</option>
+                        <option value="restaurante">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="px-3" for="tipo_negocio">Sector del negocio</label>
+                    <select class="form-control px-3" id="tipo_negocio" v-model="formData.tipo_negocio" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="cafeteria">Cafetería</option>
+                        <option value="restaurante">Restaurante</option>
+                        <option value="hoteles">Hoteles</option>
+                        <option value="reventa">Reventa</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="px-3" for="name_negocio">¿Cuál es el nombre de tu negocio?</label>
+                    <input type="text" class="form-control" id="name_negocio" placeholder="Ingresa el nombre"
+                        v-model="formData.name_negocio">
+                    <span v-if="errors.name_negocio" class="text-danger">{{ errors.last_name }}</span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="px-3" for="dateCourse">Fecha de taller "actualización de bebidas en el Cedis de
+                        Mérida"</label>
+                    <select class="form-control px-3" id="dateCourse" v-model="formData.dateCourse">
+                        <option value="">Selecciona una fecha</option>
+                        <option value="cafeteria">Viernes 4 abril | 10 a.m.</option>
+                        <option value="restaurante">Viernes 4 abril | 3 p.m.</option>
+                        <option value="hoteles">Sábado 5 abril | 10 a.m.</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Botón de enviar -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="inputNewsletter"
+                                v-model="formData.newsletter" checked>
+                            <label class="form-check-label" for="inputNewsletter">Suscríbete a nuestro
+                                newsletter</label>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Botón de enviar -->
+                        <button type="submit" class="btn btn-primary"
+                            @click.prevent="submitForm($event)">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- 
+
+
+                <div class="container my-4">
+                    <div class="progress" role="progressbar" aria-label="Info striped example" aria-valuenow="0"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div id="progress-bar" class="progress-bar bg-warning text-dark" style="width: 0%"></div>
+                    </div>
+                <div class="mb-3">
+                <label for="select" class="form-label">¿Cómo te enteraste de la Expo?</label>
+                <select class="form-select" id="inputExpo" aria-label="Default select example">
+                    <option selected>Elige una opción</option>
+                    <option value="1">A través de redes sociales (Facebook, Twitter, Instagram, etc.).</option>
+                    <option value="2">Por recomendación de un amigo o familiar.</option>
+                    <option value="3">Por correo electrónico o boletín informativo.</option>
+                    <option value="4">Por medio de un anuncio en revista.</option>
+                    <option value="5">A través de un sitio web o búsqueda en internet.</option>
+                    <option value="6">Otro</option>
+                </select>
+            </div>
+
+           <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="inputTaller" class="form-label pt-2">¿Qué curso tomaste?</label>
+                        <select class="form-select" id="inputTaller" name="inputTaller" aria-label="Default select example">
+                            <option selected>Elige una opción</option>
+                            <option value="1">EL FUTURO DEL TOSTADO DE CAFÉ EFICIENCIA Y SABOR EN ARMONIA</option>
+                            <option value="2">QUE EQUIPOS DEBO INCLUIR PARA ARRANCAR MI NEGOCIO</option>
+                            <option value="3">TALLER AVANZADO EXPLORA EL FACINANTE  MUNDO DEL BOBBA, CONCEPTOS, EQUIPOS E INSUMOS</option>
+                            <option value="4">APERTURA DE BARRA BUBBLE TEA "UNA NUEVA GENERACIÓN DE CONSUMO, NUEVAS TEXTURAS  Y FORMAS DE PREPARAR</option>
+                            <option value="5">EXPERIENCIAS DE CAFÉ  CON MIXOLOGIA CREATIVA PARA TU BARRA</option>
+                            <option value="6">SABORES DE PRIMAVERA "COMO COSTEAR, APRENDER Y PREPARAR LAS BEBIDAS DE TEMPORADA"</option>
+                            <option value="6"> VIAJE AL CORAZON DEL CAFÉ DE ESPECIALIDAD INNOVACIÓN EN PROCESOS.</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="inputDate" class="form-label pt-2">Elige la fecha</label>
+                        <select class="form-select" id="inputDate" name="inputDate" aria-label="Default select example">
+                            <option selected>Elige una opción</option>
+                            <option value="1">13 de marzo</option>
+                            <option value="2">14 de marzo</option>
+                            <option value="3">15 de marzo</option>
+                        
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="inputEmail" name="inputEmail"
+                            placeholder="Ingresa tu correo electrónico" required>
+                        <div id="emailHelp" class="form-text">No compartiremos tu correo electrónico con nadie.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="inputTelefono" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="inputTelefono"  name="inputTelefono" placeholder="Ingresa tu teléfono">
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="inputNombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Ingresa tu nombre"
+                            required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+                            title="Por favor ingresa un nombre válido (solo letras y espacios)">
+                    </div>
+                </div> -->
+
+
+    <!-- <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="select" class="form-label">¿Cuál es tu módelo de negocio?</label>
+                        <select class="form-select" id="inputExpo" aria-label="Default select example">
+                            <option selected>Elige una opción</option>
+                            <option value="1">Cafetería convencional</option>
+                            <option value="2">Cafetería de especialidad</option>
+                            <option value="3">Frappería</option>
+                            <option value="4">Mixología (Bar)</option>
+                            <option value="5">Negocio de Boba</option>
+                            <option value="6">Nevería</option>
+                            <option value="7">Hobbie</option>
+
+
+                            <option value="6">Otro</option>
+                        </select>
+                    </div>
+                </div> -->
+    <!-- <div class="col-md-12">
+                    <div class="mb-3" id="contenedor-especifica">
+                        <label for="textarea" class="form-label">Específica</label>
+                        <textarea id="inputEspecifica" name="inputEspecifica" rows="4" class="form-control"></textarea>
+                    </div>
+                </div> -->
+    <!-- <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="inputCodigoPostal" class="form-label">Código Postal</label>
+                        <input type="text" class="form-control" id="inputCodigoPostal" name="inputCodigoPostal"
+                            placeholder="Ingresa tu código postal">
+                    </div>
+                </div>
+                <div class="col-md-6" id="container-colonia" style="display: none;">
+                    <div class="mb-3">
+                        <label for="inputColonia" class="form-label">Colonia</label>
+                        <select class="form-control" id="inputColonia">
+                            <option value="" disabled selected>Ingresa tu colonia</option>
+                            Las opciones se agregarán dinámicamente con JavaScript 
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6" id="container-municipio" style="display: none;">
+                    <div class="mb-3">
+                        <label for="inputMunicipio" class="form-label">Municipio</label>
+                        <input type="text" class="form-control" id="inputMunicipio" placeholder="Ingresa tu municipio">
+                    </div>
+                </div>
+                <div class="col-md-6" id="container-estado" style="display: none;">
+                    <div class="mb-3">
+                        <label for="inputEstado" class="form-label">Estado</label>
+                        <input type="text" class="form-control" id="inputEstado" placeholder="Ingresa tu estado">
+                    </div>
+                </div>
+                <div class="col-md-6" id="container-ciudad" style="display: none;">
+                    <div class="mb-3">
+                        <label for="inputCiudad" class="form-label">Ciudad</label>
+                        <input type="text" class="form-control" id="inputCiudad" placeholder="Ingresa tu ciudad">
+                    </div>
+                </div>
+                <div class="col-md-12 d-none">
+                    <div class="mb-3">
+                        <label for="inputObservaciones" class="form-label">Observaciones</label>
+                        <textarea class="form-control" id="inputObservaciones" rows="3"
+                            placeholder="Ingresa tus observaciones"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="inputAvisoPrivacidad" checked>
+                        <label class="form-check-label" for="inputAvisoPrivacidad">¿Aceptas nuestro aviso de
+                            privacidad?</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="inputNewsletter" checked>
+                        <label class="form-check-label" for="inputNewsletter">Suscríbete a nuestro newsletter</label>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary my-3">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div> -->
+
+    <footer class="container-fluid">
+        <div class="text-center">
+            <a href="https://cafeetrusca.com/aviso-de-privacidad" target="_blank" class="aviso">Consulta
+                nuestro aviso
+                de privacidad</a>
+        </div>
+    </footer>
+
+    <!-- Library para íconos-->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Código de Javascript -->
+    <!-- <script src="index.js?v=1.00000000111111913"></script> -->
+
+    <script type="text/javascript"
+        src="https://api.clientify.net/web-marketing/webforms/external/script/230797.js"></script>
+
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    formData: {
+                        user_id: "",
+                        first_name: "",
+                        last_name: "",
+                        phone: "",
+                        email: "",
+                        city: "",
+                        state: "",
+                        productos: [],
+                        tipo_negocio: "",
+                        name_negocio: "",
+                        newsletter: true,
+                        dateCourse: "",
+                    },
+                    errors: {},
+                };
+            },
+            methods: {
+                validateForm() {
+                    this.errors = {};
+                    let valid = true;
+
+                    if (!this.formData.first_name) {
+                        this.errors.first_name = 'El nombre es obligatorio.';
+                        valid = false;
+                    }
+                    if (!this.formData.last_name) {
+                        this.errors.last_name = 'El apellido es obligatorio.';
+                        valid = false;
+                    }
+                    if (!this.formData.phone || !/^\d{10}$/.test(this.formData.phone)) {
+                        this.errors.phone = 'El teléfono debe contener 10 dígitos.';
+                        valid = false;
+                    }
+                    if (!this.formData.city) {
+                        this.errors.city = 'La ciudad es obligatoria.';
+                        valid = false;
+                    }
+                    if (!this.formData.state) {
+                        this.errors.state = 'El estado es obligatorio.';
+                        valid = false;
+                    }
+                    return valid;
+                },
+
+                submitForm(event) {
+                    event.preventDefault(); // Evita el envío predeterminado del formulario
+
+                    this.formData.productos = [];
+
+                    if (document.getElementById('insumos').checked) this.formData.productos.push("Insumos");
+                    if (document.getElementById('accesorios').checked) this.formData.productos.push("Accesorios");
+                    if (document.getElementById('maquinas').checked) this.formData.productos.push("Máquinas");
+                    if (document.getElementById('cursos').checked) this.formData.productos.push("Cursos y Talleres");
+
+                    if (this.validateForm()) {
+                        fetch('https://cafeetrusca.com/api/newsLetter', {
+                            method: "POST",
+                            body: JSON.stringify(this.formData),
+                            mode: 'cors',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Registro exitoso',
+                                        text: 'Tu formulario fue enviado correctamente.',
+                                    }).then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    throw new Error('Error en la respuesta');
+                                }
+                            })
+                            .catch(() => {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'Ocurrió un error al enviar el formulario.',
+                                });
+                            });
+                    }
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
