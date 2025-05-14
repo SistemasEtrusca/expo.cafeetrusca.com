@@ -349,8 +349,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
 
                 submitForm(event) {
-                    //const botonen = document.getElementById('botonenviar')
-                   // botonen.disabled = true;
+                    const botonen = document.getElementById('botonenviar')
+                    botonen.disabled = true;
                     event.preventDefault(); // Evita el envío predeterminado del formulario
                     
                     
@@ -376,9 +376,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         }
                         })
                         .then(response => {
-                            //botonen.disabled = false;
+                            botonen.disabled = false;
                         
-                        if (response) {
+                        if (response.ok) {
                             Swal.fire({
                             icon: 'success',
                             title: 'Registro exitoso',
@@ -392,7 +392,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         })
                         .catch(() => {
                         //this.closeLoading(); // Cerrar el loading en caso de error
-                        //botonen.disabled = false;
+                        botonen.disabled = false;
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
