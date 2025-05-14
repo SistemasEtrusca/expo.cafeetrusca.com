@@ -318,31 +318,39 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             methods: {
 
                 
+
                 validateForm() {
+                    const botonen = document.getElementById('botonenviar')
                     this.errors = {};
                     let valid = true;
 
                     if (!this.formData.first_name) {
                         this.errors.first_name = 'El nombre es obligatorio.';
                         valid = false;
+                        botonen.disabled = false;
                     }
                     if (!this.formData.fatherlasname) {
                         this.errors.fatherlastname = 'El apellido es obligatorio.';
                         valid = false;
+                        botonen.disabled = false;
                     }
                     if (!this.formData.telephone || !/^\d{10}$/.test(this.formData.telephone)) {
                         this.errors.telephone = 'El teléfono debe contener 10 dígitos.';
                         valid = false;
+                        botonen.disabled = false;
                     }
                     if (!this.formData.municipio) {
                         this.errors.municipio = 'La ciudad es obligatoria.';
                         valid = false;
+                        botonen.disabled = false;
                     }
                     if (!this.formData.ciudad) {
                         this.errors.ciudad = 'El estado es obligatorio.';
                         valid = false;
+                        botonen.disabled = false;
                     }
                     return valid;
+
                 },
 
                 
