@@ -34,6 +34,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
         </nav>
     </header>
 
+    
+
     <div class="container">
         <h1 class="pt-2 px-2 text-center">Expo Proveedores del Restaurante en Monterrey 2025</h1>
         <!-- <h2 class="pt-0 px-2 text-center"> Experiencia sensorial </h2> -->
@@ -51,28 +53,28 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             <!-- Apellido -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
-                    <label for="last_name">Apellidos</label>
-                    <input type="text" v-model="formData.last_name" class="form-control" id="last_name"
+                    <label for="fatherlastname">Apellidos</label>
+                    <input type="text" v-model="formData.fatherlasname" class="form-control" id="fatherlastname"
                         placeholder="Ingresa tu apellido" required>
-                    <span v-if="errors.last_name" class="text-danger">{{ errors.last_name }}</span>
+                    <span v-if="errors.fatherlastname" class="text-danger">{{ errors.fatherlastname }}</span> 
                 </div>
             </div>
             <!-- City -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
-                    <label for="city">Ciudad</label>
-                    <input type="text" v-model="formData.city" class="form-control" id="city" placeholder="Ciudad"
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" v-model="formData.ciudad" class="form-control" id="ciudad" placeholder="Ciudad"
                         required>
-                    <span v-if="errors.city" class="text-danger">{{ errors.city }}</span>
+                    <span v-if="errors.ciudad" class="text-danger">{{ errors.ciudad }}</span>
                 </div>
             </div>
             <!-- State -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
-                    <label for="state">Estado</label>
-                    <input type="text" v-model="formData.state" class="form-control" id="state" placeholder="Estado"
+                    <label for="estado">Estado</label>
+                    <input type="text" v-model="formData.estado" class="form-control" id="estado" placeholder="Estado"
                         required>
-                    <span v-if="errors.state" class="text-danger">{{ errors.state }}</span>
+                    <span v-if="errors.estado" class="text-danger">{{ errors.estado }}</span>
                 </div>
             </div>
             <!-- Codigo Postal                      -->
@@ -87,16 +89,16 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             <!-- Teléfono o WhatsApp -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
-                    <label for="phone">Teléfono o WhatsApp</label>
-                    <input type="tel" v-model="formData.phone" class="form-control" id="phone" placeholder="10 dígitos"
+                    <label for="telephone">Teléfono o WhatsApp</label>
+                    <input type="tel" v-model="formData.telephone" class="form-control" id="telephone" placeholder="10 dígitos"
                         pattern="[0-9]{10}" required>
                     <small class="form-text text-muted">Debe contener 10 números</small>
-                    <span v-if="errors.phone" class="text-danger">{{ errors.phone }}</span>
+                    <span v-if="errors.telephone" class="text-danger">{{ errors.telephone }}</span>
                 </div>
             </div>
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
-                    <label for="phone">Correo Electrónico</label>
+                    <label for="email">Correo Electrónico</label>
                     <input type="email" v-model="formData.email" class="form-control" id="email" placeholder="email"
                         required>
                     <small class="form-text text-muted"></small>
@@ -162,44 +164,44 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             
             <div class="col-md-12">
                 <div class="form-group">
-                    <label class="px-3" for="dateCourse">
-                        Fecha de taller "actualización de bebidas en el Cedis de Monterrey"
+                    <label class="px-3" for="curso">
+                        Fecha de taller en el Cedis de Monterrey
                     </label>
-                    <select class="form-control px-3" id="dateCourse" v-model="formData.dateCourse">
+                    <select class="form-control px-3" id="curso" v-model="formData.curso">
                         <option value="">Selecciona una fecha</option>
 
                         <optgroup label="Formación de emprendedores">
-                            <option value="emprendedores-julio">17 y 18 julio</option>
+                            <option value="emprendedores-julio">17 y 18 julio 9:00 a.m</option>
                         </optgroup>
 
                         <optgroup label="Bubble tea básico">
-                            <option value="bubble-basico-julio">22 julio</option>
-                            <option value="bubble-basico-agosto">28 agosto</option>
-                            <option value="bubble-basico-septiembre">25 septiembre</option>
+                            <option value="bubble-basico-julio">22 julio 10:00 a.m</option>
+                            <option value="bubble-basico-agosto">28 agosto 10:00 a.m</option>
+                            <option value="bubble-basico-septiembre">25 septiembre 10:00 a.m</option>
                         </optgroup>
 
                         <optgroup label="Bubble tea especializado">
-                            <option value="bubble-especializado-julio">23 julio</option>
-                            <option value="bubble-especializado-agosto">29 agosto</option>
-                            <option value="bubble-especializado-septiembre">26 septiembre</option>
+                            <option value="bubble-especializado-julio">23 julio 10:00 a.m</option>
+                            <option value="bubble-especializado-agosto">29 agosto 10:00 a.m</option>
+                            <option value="bubble-especializado-septiembre">26 septiembre 10:00 a.m</option>
                         </optgroup>
 
                         <optgroup label="Formación para un barista">
-                            <option value="barista-julio">3 julio</option>
-                            <option value="barista-agosto">19 agosto</option>
+                            <option value="barista-julio">3 julio 10:00 a.m</option>
+                            <option value="barista-agosto">19 agosto 10:00 a.m</option>
                         </optgroup>
 
                         <optgroup label="Arte latte">
-                            <option value="latte-julio">16 julio</option>
-                            <option value="latte-septiembre">23 septiembre</option>
+                            <option value="latte-julio">16 julio 10:00 a.m</option>
+                            <option value="latte-septiembre">23 septiembre 10:00 a.m</option>
                         </optgroup>
 
                         <optgroup label="Mixología">
-                            <option value="mixologia-agosto">13 agosto</option>
+                            <option value="mixologia-agosto">13 agosto 10:00 a.m</option>
                         </optgroup>
 
                         <optgroup label="Brew & cold brew">
-                            <option value="brew-agosto">12 agosto</option>
+                            <option value="brew-agosto">12 agosto 10:00 a.m</option>
                         </optgroup>
                     </select>
                 </div>
@@ -228,11 +230,11 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             <!-- Observaciones                      -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
-                    <label for="codigopostal">Observaciones</label>
-                    <textarea  v-model="formData.observaciones" class="form-control" id="observaciones" placeholder="Comentarios"
+                    <label for="message">Observaciones</label>
+                    <textarea  v-model="formData.message" class="form-control" id="message" placeholder="Comentarios"
                         required>
                     </textarea>
-                    <span v-if="errors.observaciones" sclass="text-danger">{{ errors.observaciones }}</span>
+                    <span v-if="errors.message" sclass="text-danger">{{ errors.message }}</span>
                 </div>
             </div>
 
@@ -254,7 +256,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
                     <div class="col-md-6">
                         <!-- Botón de enviar -->
-                        <button type="submit" class="btn btn-primary"
+                        <button type="submit" class="btn btn-primary" id="botonenviar"
                             @click.prevent="submitForm($event)">Enviar</button>
                     </div>
                 </div>
@@ -271,6 +273,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
         </div>
     </footer>
 
+    
     <!-- Library para íconos-->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <!-- Bootstrap Bundle with Popper -->
@@ -286,29 +289,46 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
 
     <script>
+       
+
         const app = Vue.createApp({
             data() {
                 return {
                     formData: {
                         user_id: "",
                         first_name: "",
-                        last_name: "",
-                        phone: "",
+                        fatherlasname: "",
+                        motherlastname: "",
+                        telephone: "",
                         email: "",
-                        city: "",
+                        ciudad: "",
                         codigopostal: "",
-                        state: "",
+                        estado: "",
                         productos: [],
                         tipo_negocio: "",
                         name_negocio: "",
-                        observaciones: "",
+                        message: "",
                         newsletter: true,
-                        dateCourse: "",
+                        curso: "",
                     },
                     errors: {},
                 };
             },
+
             methods: {
+
+                openLoading() {
+                    this.isLoading = true;
+                   // this.$vs.loading({ type: 'upload', text: 'Enviando...' }); //evento de carga
+                },
+
+                closeLoading() {
+                    this.isLoading = false;
+                   // const loading = this.$vs.loading();
+                    if (loading) {
+                        loading.close();
+                    }
+                },
                 validateForm() {
                     this.errors = {};
                     let valid = true;
@@ -317,27 +337,35 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         this.errors.first_name = 'El nombre es obligatorio.';
                         valid = false;
                     }
-                    if (!this.formData.last_name) {
-                        this.errors.last_name = 'El apellido es obligatorio.';
+                    if (!this.formData.fatherlasname) {
+                        this.errors.fatherlastname = 'El apellido es obligatorio.';
                         valid = false;
                     }
-                    if (!this.formData.phone || !/^\d{10}$/.test(this.formData.phone)) {
-                        this.errors.phone = 'El teléfono debe contener 10 dígitos.';
+                    if (!this.formData.telephone || !/^\d{10}$/.test(this.formData.telephone)) {
+                        this.errors.telephone = 'El teléfono debe contener 10 dígitos.';
                         valid = false;
                     }
-                    if (!this.formData.city) {
-                        this.errors.city = 'La ciudad es obligatoria.';
+                    if (!this.formData.municipio) {
+                        this.errors.municipio = 'La ciudad es obligatoria.';
                         valid = false;
                     }
-                    if (!this.formData.state) {
-                        this.errors.state = 'El estado es obligatorio.';
+                    if (!this.formData.ciudad) {
+                        this.errors.ciudad = 'El estado es obligatorio.';
                         valid = false;
                     }
                     return valid;
                 },
 
+                
+
+
                 submitForm(event) {
+                    const botonen = document.getElementById('botonenviar')
+                    botonen.disabled = true;
                     event.preventDefault(); // Evita el envío predeterminado del formulario
+                    
+                    
+                     
 
                     this.formData.productos = [];
 
@@ -347,35 +375,41 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     if (document.getElementById('cursos').checked) this.formData.productos.push("Cursos y Talleres");
 
                     if (this.validateForm()) {
-                        fetch('https://cafeetrusca.com/api/newsLetter', {
-                            method: "POST",
-                            body: JSON.stringify(this.formData),
-                            mode: 'cors',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
+                        //this.openLoading(); // Mostrar el loading antes de la petición
 
+                        fetch('https://cafeetrusca.com/api/newsLetter', {
+                        method: "POST",
+                        body: JSON.stringify(this.formData),
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
                         })
-                            .then(response => {
-                                if (response.ok) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Registro exitoso',
-                                        text: 'Tu formulario fue enviado correctamente.',
-                                    }).then(() => {
-                                        location.reload();
-                                    });
-                                } else {
-                                    throw new Error('Error en la respuesta');
-                                }
-                            })
-                            .catch(() => {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: 'Ocurrió un error al enviar el formulario.',
-                                });
+                        .then(response => {
+                        //this.closeLoading(); // Cerrar el loading en caso de éxito
+                        if (response) {
+                            Swal.fire({
+                            icon: 'success',
+                            title: 'Registro exitoso',
+                            text: 'Tu formulario fue enviado correctamente.',
+                            }).then(() => {
+                            
+                            location.reload();
+                            botonen.disabled = false;
                             });
+                        } else {
+                            throw new Error('Error en la respuesta');
+                        }
+                        })
+                        .catch(() => {
+                        //this.closeLoading(); // Cerrar el loading en caso de error
+                        botonen.disabled = false;
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Ocurrió un error al enviar el formulario.',
+                        });
+                        });
                     }
                 }
             }
@@ -383,4 +417,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
         app.mount('#app');
     </script>
+
+   
+    
+
 </body>
