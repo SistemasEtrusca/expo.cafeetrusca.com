@@ -63,18 +63,18 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
                     <label for="ciudad">Ciudad</label>
-                    <input type="text" v-model="formData.ciudad" class="form-control" id="ciudad" placeholder="Ciudad"
+                    <input type="text" v-model="formData.municipio" class="form-control" id="municipio" placeholder="Ciudad"
                         required>
-                    <span v-if="errors.ciudad" class="text-danger">{{ errors.ciudad }}</span>
+                    <span v-if="errors.municipio" class="text-danger">{{ errors.municipio }}</span>
                 </div>
             </div>
             <!-- State -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
-                    <label for="estado">Estado</label>
-                    <input type="text" v-model="formData.estado" class="form-control" id="estado" placeholder="Estado"
+                    <label for="ciudad">Estado</label>
+                    <input type="text" v-model="formData.ciudad" class="form-control" id="ciudad" placeholder="Estado"
                         required>
-                    <span v-if="errors.estado" class="text-danger">{{ errors.estado }}</span>
+                    <span v-if="errors.ciudad" class="text-danger">{{ errors.ciudad }}</span>
                 </div>
             </div>
             <!-- Codigo Postal                      -->
@@ -301,9 +301,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         motherlastname: "",
                         telephone: "",
                         email: "",
-                        ciudad: "",
+                        municipio: "",
                         codigopostal: "",
-                        estado: "",
+                        ciudad: "",
                         productos: [],
                         tipo_negocio: "",
                         name_negocio: "",
@@ -317,18 +317,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
             methods: {
 
-                openLoading() {
-                    this.isLoading = true;
-                   // this.$vs.loading({ type: 'upload', text: 'Enviando...' }); //evento de carga
-                },
-
-                closeLoading() {
-                    this.isLoading = false;
-                   // const loading = this.$vs.loading();
-                    if (loading) {
-                        loading.close();
-                    }
-                },
+                
                 validateForm() {
                     this.errors = {};
                     let valid = true;
@@ -360,8 +349,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
 
                 submitForm(event) {
-                    const botonen = document.getElementById('botonenviar')
-                    botonen.disabled = true;
+                    //const botonen = document.getElementById('botonenviar')
+                   // botonen.disabled = true;
                     event.preventDefault(); // Evita el envío predeterminado del formulario
                     
                     
@@ -375,7 +364,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     if (document.getElementById('cursos').checked) this.formData.productos.push("Cursos y Talleres");
 
                     if (this.validateForm()) {
-                        //this.openLoading(); // Mostrar el loading antes de la petición
+                       
+
 
                         fetch('https://cafeetrusca.com/api/newsLetter', {
                         method: "POST",
@@ -386,16 +376,15 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         }
                         })
                         .then(response => {
-                        //this.closeLoading(); // Cerrar el loading en caso de éxito
+                            //botonen.disabled = false;
+                        
                         if (response) {
                             Swal.fire({
                             icon: 'success',
                             title: 'Registro exitoso',
                             text: 'Tu formulario fue enviado correctamente.',
                             }).then(() => {
-                            
                             location.reload();
-                            botonen.disabled = false;
                             });
                         } else {
                             throw new Error('Error en la respuesta');
@@ -403,7 +392,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         })
                         .catch(() => {
                         //this.closeLoading(); // Cerrar el loading en caso de error
-                        botonen.disabled = false;
+                        //botonen.disabled = false;
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
