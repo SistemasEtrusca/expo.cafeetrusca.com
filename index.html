@@ -54,27 +54,27 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
                     <label for="fatherlastname">Apellidos</label>
-                    <input type="text" v-model="formData.fatherlasname" class="form-control" id="fatherlastname"
+                    <input type="text" v-model="formData.fatherlastname" class="form-control" id="fatherlastname"
                         placeholder="Ingresa tu apellido" required>
                     <span v-if="errors.fatherlastname" class="text-danger">{{ errors.fatherlastname }}</span> 
                 </div>
             </div>
-            <!-- City -->
+            <!-- City  -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
                     <label for="ciudad">Ciudad</label>
-                    <input type="text" v-model="formData.municipio" class="form-control" id="municipio" placeholder="Ciudad"
-                        required>
-                    <span v-if="errors.municipio" class="text-danger">{{ errors.municipio }}</span>
-                </div>
-            </div>
-            <!-- State -->
-            <div class="col-xs-3 mx-2">
-                <div class="form-group mb-3">
-                    <label for="ciudad">Estado</label>
-                    <input type="text" v-model="formData.ciudad" class="form-control" id="ciudad" placeholder="Estado"
+                    <input type="text" v-model="formData.ciudad" class="form-control" id="ciudad" placeholder="Ciudad"
                         required>
                     <span v-if="errors.ciudad" class="text-danger">{{ errors.ciudad }}</span>
+                </div>
+            </div>
+            <!-- State    --> 
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="estado">Estado</label>
+                    <input type="text" v-model="formData.estado" class="form-control" id="estado" placeholder="Estado"
+                        required>
+                    <span v-if="errors.estado" class="text-danger">{{ errors.estado }}</span>
                 </div>
             </div>
             <!-- Codigo Postal                      -->
@@ -207,26 +207,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                 </div>
             </div>
 
-            <!-- 
-
-            
-            
-            
-            
-            -->
-
-            
-            <!-- Especificaciones                     
-            <div class="col-xs-3 mx-2">
-                <div class="form-group mb-3">
-                    <label for="especifica">Especificaciones</label>
-                    <input type="text" v-model="formData.especipica" class="form-control" id="especifica" placeholder="Ingrese sus especificaciones"
-                        required>
-                    <span v-if="errors.especifica" class="text-danger">{{ errors.codigopostal }}</span>
-                </div>
-            </div> 
-
-             -->
+           
             <!-- Observaciones                      -->
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
@@ -296,12 +277,12 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                 return {
                     formData: {
                         user_id: "",
-                        first_name: "",
-                        fatherlasname: "",
+                        first_name: "", 
+                        fatherlastname: "",// solo esta activo este campo para los dos apellidos
                         motherlastname: "",
                         telephone: "",
                         email: "",
-                        municipio: "",
+                        estado: "", // 
                         codigopostal: "",
                         ciudad: "",
                         productos: [],
@@ -317,7 +298,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
             methods: {
 
-                
+            
 
                 validateForm() {
                     const botonen = document.getElementById('botonenviar')
@@ -329,7 +310,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         valid = false;
                         botonen.disabled = false;
                     }
-                    if (!this.formData.fatherlasname) {
+                    if (!this.formData.fatherlastname) {  
                         this.errors.fatherlastname = 'El apellido es obligatorio.';
                         valid = false;
                         botonen.disabled = false;
@@ -339,13 +320,13 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         valid = false;
                         botonen.disabled = false;
                     }
-                    if (!this.formData.municipio) {
-                        this.errors.municipio = 'La ciudad es obligatoria.';
+                    if (!this.formData.ciudad) {
+                        this.errors.ciudad = 'La ciudad es obligatoria.';
                         valid = false;
                         botonen.disabled = false;
                     }
-                    if (!this.formData.ciudad) {
-                        this.errors.ciudad = 'El estado es obligatorio.';
+                    if (!this.formData.estado) {
+                        this.errors.estado = 'El estado es obligatorio.';
                         valid = false;
                         botonen.disabled = false;
                     }
@@ -357,10 +338,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
 
                 submitForm(event) {
-                    const botonen = document.getElementById('botonenviar')
-                    botonen.disabled = true;
-                    event.preventDefault(); // Evita el envío predeterminado del formulario
-                    
+                 
                     
                      
 
@@ -371,8 +349,22 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     if (document.getElementById('maquinas').checked) this.formData.productos.push("Máquinas");
                     if (document.getElementById('cursos').checked) this.formData.productos.push("Cursos y Talleres");
 
+                    const botonen = document.getElementById('botonenviar')
+                    botonen.disabled = true;
+                    
+                    event.preventDefault(); // Evita el envío predeterminado del formulario
+                    
+                   
+
                     if (this.validateForm()) {
-                       
+
+                        Swal.fire({ //Muestra el loading hasta que den la respuesta y se active un nuevo Swal con el success o el error
+                            title: "Cargando...",
+                            text: "Por favor espere",
+                            imageUrl: "https://www.epgdlaw.com/wp-content/uploads/2017/09/ajax-loader.gif",
+                            showConfirmButton: false,
+                            allowOutsideClick: false
+                        });
 
 
                         fetch('https://cafeetrusca.com/api/newsLetter', {
@@ -399,7 +391,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         }
                         })
                         .catch(() => {
-                        //this.closeLoading(); // Cerrar el loading en caso de error
+                        
                         botonen.disabled = false;
                         Swal.fire({
                             icon: 'error',
