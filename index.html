@@ -99,7 +99,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
                     <label for="email">Correo Electrónico</label>
-                    <input type="email" v-model="formData.email" class="form-control" id="email" placeholder="email"
+                    <input type="email" v-model="formData.email" class="form-control" id="email" placeholder="Ingrese su email"
                         required>
                     <small class="form-text text-muted"></small>
                     <span v-if="errors.email" class="text-danger">{{ errors.email }}</span>
@@ -302,33 +302,54 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
                 validateForm() {
                     const botonen = document.getElementById('botonenviar')
+                    
+                   
+
                     this.errors = {};
                     let valid = true;
 
                     if (!this.formData.first_name) {
-                        this.errors.first_name = 'El nombre es obligatorio.';
+                        this.errors.first_name = '* El nombre es obligatorio.';
                         valid = false;
                         botonen.disabled = false;
+                        document.getElementById('first_name').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
                     }
                     if (!this.formData.fatherlastname) {  
-                        this.errors.fatherlastname = 'El apellido es obligatorio.';
+                        this.errors.fatherlastname = '* El apellido es obligatorio.';
                         valid = false;
                         botonen.disabled = false;
+                        document.getElementById('fatherlastname').scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                     if (!this.formData.telephone || !/^\d{10}$/.test(this.formData.telephone)) {
-                        this.errors.telephone = 'El teléfono debe contener 10 dígitos.';
+                        this.errors.telephone = '* El teléfono debe contener 10 dígitos.';
                         valid = false;
                         botonen.disabled = false;
+                        document.getElementById('telephone').scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                     if (!this.formData.ciudad) {
-                        this.errors.ciudad = 'La ciudad es obligatoria.';
+                        this.errors.ciudad = '* La ciudad es obligatoria.';
                         valid = false;
                         botonen.disabled = false;
+                        document.getElementById('ciudad').scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                     if (!this.formData.estado) {
-                        this.errors.estado = 'El estado es obligatorio.';
+                        this.errors.estado = '* El estado es obligatorio.';
                         valid = false;
                         botonen.disabled = false;
+                        document.getElementById('estado').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    if (!this.formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.formData.email) ) {
+                        this.errors.email = '* Ingrese un email valido.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('email').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    if (!this.formData.codigopostal || !/^\d{5}$/.test(this.formData.codigopostal)) {
+                        this.errors.codigopostal = ' * El código postal debe tener 5 dígitos.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('codigopostal').scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                     return valid;
 
@@ -358,13 +379,14 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
                     if (this.validateForm()) {
 
-                        Swal.fire({ //Muestra el loading hasta que den la respuesta y se active un nuevo Swal con el success o el error
+                       Swal.fire({ //Muestra el loading hasta que den la respuesta y se active un nuevo Swal con el success o el error
                             title: "Cargando...",
                             text: "Por favor espere",
                             imageUrl: "https://www.epgdlaw.com/wp-content/uploads/2017/09/ajax-loader.gif",
                             showConfirmButton: false,
                             allowOutsideClick: false
                         });
+                        
 
 
                         fetch('https://cafeetrusca.com/api/newsLetter', {
