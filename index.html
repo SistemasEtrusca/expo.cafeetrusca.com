@@ -198,6 +198,15 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                 </div>
             </div>
 
+            <!-- Sucursal      v-model="formData.sucursal" required-->
+             <div class="col-xs-3 mx-2">
+                    <input type="hidden"  v-model="formData.expo" id="expo" name="expo"  value="CANCUN" >
+                </div>
+          
+                
+              
+       
+
            
             <!-- Observaciones                      -->
             <div class="col-xs-3 mx-2">
@@ -282,6 +291,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                         message: "",
                         newsletter: true,
                         curso: "",
+                        expo:""
+                        
                     },
                     errors: {},
                 };
@@ -292,7 +303,11 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             
 
                 validateForm() {
-                    const botonen = document.getElementById('botonenviar')
+                    const botonen = document.getElementById('botonenviar');
+                    
+                    
+                    
+
                     
                    
 
@@ -351,7 +366,12 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
                 submitForm(event) {
                  
-                    
+                    const botonen = document.getElementById('botonenviar')
+                    botonen.disabled = true;
+                    //sucur = document.getElementById('sucursal').value;
+                    //console.log(sucur);
+                    this.formData.expo = "cancun";
+                     
                      
 
                     this.formData.productos = [];
@@ -361,8 +381,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     if (document.getElementById('maquinas').checked) this.formData.productos.push("Máquinas");
                     if (document.getElementById('cursos').checked) this.formData.productos.push("Cursos y Talleres");
 
-                    const botonen = document.getElementById('botonenviar')
-                    botonen.disabled = true;
+                    
                     
                     event.preventDefault(); // Evita el envío predeterminado del formulario
                     
