@@ -136,15 +136,15 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                 <div class="form-group mb-3">
                     <h4 class="px-3">Información de negocio</h4>
                     <label class="mx-3" for="ifNegocio">¿Tienes un negocio?</label>
-                    <select class="form-control px-3" id="ifNegocio" v-model="formData.ifNegocio" required>
+                    <select class="form-control px-3" id="ifNegocio" @change="handlechange" v-model="formData.ifNegocio" required>
                         <option value="">Selecciona una opción</option>
-                        <option value="cafeteria">Sí</option>
-                        <option value="restaurante">No</option>
+                        <option value="si">Sí</option>
+                        <option value="no"  selected>No</option>
                     </select>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group mb-3" id="negocio_ti" hidden>
                     <label class="mx-3" for="tipo_negocio">Sector del negocio</label>
-                    <select class="form-control px-3" id="tipo_negocio" v-model="formData.tipo_negocio" required>
+                    <select class="form-control px-3" id="tipo_negocio" v-model="formData.tipo_negocio"  required>
                         <option value="">Selecciona una opción</option>
                         <option value="cafeteria">Cafetería</option>
                         <option value="restaurante">Restaurante</option>
@@ -154,16 +154,18 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                     </select>
                 </div>
 
-                <div class="form-group mb-3">
+                <div class="form-group mb-3" id="negocio_na" hidden>
                     <label class="mx-3" for="name_negocio">¿Cuál es el nombre de tu negocio?</label>
                     <input type="text" class="form-control" id="name_negocio" placeholder="Ingresa el nombre"
-                        v-model="formData.name_negocio">
+                        v-model="formData.name_negocio" >
                     <span v-if="errors.name_negocio" class="text-danger">{{ errors.last_name }}</span>
                 </div>
+
+
             </div>
             
             <div class="col-md-12">
-                <div class="form-group">
+                <div class="form-group" hidden>
                     <label class="px-3" for="curso">
                         Fecha de taller 
                     </label>
@@ -294,6 +296,22 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
 
             methods: {
 
+
+
+                handlechange(event) {
+                    const selectedValue = event.target.value;
+                    const tipoNegocio = document.getElementById('negocio_ti');
+                    const nameNegocio = document.getElementById('negocio_na');
+
+                    if (selectedValue === 'si') {
+                        tipoNegocio.hidden = false;
+                        nameNegocio.hidden = false;
+                    } else {
+                        tipoNegocio.hidden = true;
+                        nameNegocio.hidden = true;
+                        
+                    }
+                },
             
 
                 validateForm() {
