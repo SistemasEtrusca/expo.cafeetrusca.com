@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <title>ExpHotel Cancún 2025</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js
+"></script>
+    <link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
+" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5549375.js"></script>
+    <link href="style.css/?v=2.00000001" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="https://cafeetrusca.com/" target="_blank">
+                    <img src="/assets/logo_etruscab.png" alt="Logo Café Etrusca" id="logo" width="50px"
+                        class="img-fluid">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    
+
+    <div class="container">
+        <h1 class="pt-2 px-2 text-center"> ExpHotel Cancún 2025 </h1>
+        <!-- <h2 class="pt-0 px-2 text-center"> Experiencia sensorial </h2> -->
+    </div>
+    <div class="container my-4" id="app">
+        <form id="myForm" name="expo" method="post">
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="first_name">Nombre</label>
+                    <input type="text" v-model="formData.first_name" class="form-control" id="first_name"
+                        placeholder="Ingresa tu nombre" required>
+                    <span v-if="errors.first_name" class="text-danger">{{ errors.first_name }}</span>
+                </div>
+            </div>
+            <!-- Apellido -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="fatherlastname">Apellidos</label>
+                    <input type="text" v-model="formData.fatherlastname" class="form-control" id="fatherlastname"
+                        placeholder="Ingresa tu apellido" required>
+                    <span v-if="errors.fatherlastname" class="text-danger">{{ errors.fatherlastname }}</span> 
+                </div>
+            </div>
+            <!-- City  -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" v-model="formData.ciudad" class="form-control" id="ciudad" placeholder="Ciudad"
+                        required>
+                    <span v-if="errors.ciudad" class="text-danger">{{ errors.ciudad }}</span>
+                </div>
+            </div>
+            <!-- State    --> 
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="estado">Estado</label>
+                    <input type="text" v-model="formData.estado" class="form-control" id="estado" placeholder="Estado"
+                        required>
+                    <span v-if="errors.estado" class="text-danger">{{ errors.estado }}</span>
+                </div>
+            </div>
+            <!-- Codigo Postal                      -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="codigopostal">Código Postal</label>
+                    <input type="text" v-model="formData.codigopostal" class="form-control" id="codigopostal" placeholder="5 dígitos"
+                    pattern="[0-9]{5}"    required>
+                    <span v-if="errors.codigopostal" class="text-danger">{{ errors.codigopostal }}</span>
+                </div>
+            </div>
+            <!-- Teléfono o WhatsApp -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="telephone">Teléfono o WhatsApp</label>
+                    <input type="tel" v-model="formData.telephone" class="form-control" id="telephone" placeholder="10 dígitos"
+                        pattern="[0-9]{10}" required>
+                    <small class="form-text text-muted">Debe contener 10 números</small>
+                    <span v-if="errors.telephone" class="text-danger">{{ errors.telephone }}</span>
+                </div>
+            </div>
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" v-model="formData.email" class="form-control" id="email" placeholder="Ingrese su email"
+                        required>
+                    <small class="form-text text-muted"></small>
+                    <span v-if="errors.email" class="text-danger">{{ errors.email }}</span>
+                </div>
+            </div>
+           
+            <div class="col-xs-3 mx-2">
+                 <div class="col-xs-4">
+                <!-- Curso o taller -->
+                    <div class="form-group">
+                        <h4 class="px-3">Productos de interés</h4>
+                        <div class="mx-3 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="insumos" name="insumos">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Insumos</label>
+                        </div>
+                        <div class="mx-3 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="accesorios" name="accesorios">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Accesorios</label>
+                        </div>
+                        <div class="mx-3 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="maquinas" name="maquinas">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Máquinas</label>
+                        </div>
+                        <div class="mx-3 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="cursos" id="cursos">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Cursos y
+                                talleres</label>
+                        </div>
+                    </div> 
+                 </div>
+
+
+                <!-- Tipo de sector xx -->
+                <div class="form-group mb-3">
+                    <h4 class="px-3">Información de negocio</h4>
+                    <label class="mx-3" for="ifNegocio">¿Tienes un negocio?</label>
+                    <select class="form-control px-3" id="ifNegocio" v-model="formData.ifNegocio" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="cafeteria">Sí</option>
+                        <option value="restaurante">No</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="mx-3" for="tipo_negocio">Sector del negocio</label>
+                    <select class="form-control px-3" id="tipo_negocio" v-model="formData.tipo_negocio" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="cafeteria">Cafetería</option>
+                        <option value="restaurante">Restaurante</option>
+                        <option value="hoteles">Hoteles</option>
+                        <option value="reventa">Reventa</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="mx-3" for="name_negocio">¿Cuál es el nombre de tu negocio?</label>
+                    <input type="text" class="form-control" id="name_negocio" placeholder="Ingresa el nombre"
+                        v-model="formData.name_negocio">
+                    <span v-if="errors.name_negocio" class="text-danger">{{ errors.last_name }}</span>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="px-3" for="curso">
+                        Fecha de taller 
+                    </label>
+                    <select class="form-control px-3" id="curso" v-model="formData.curso">
+                        <option value="">Selecciona una fecha</option>
+
+                        <optgroup label="Mundo Chillout">
+                            <option value="10-julio-Mundo-Chillout">10 julio 12:00 p.m</option>
+                            <option value="11-julio-Mundo-Chillout">11 julio 12:00 p.m</option>
+                            <option value="12-julio-Mundo-Chillout">12 julio 12:00 p.m</option>
+                        </optgroup>
+
+                        <optgroup label="Bebidas Moleculares">
+                            <option value="10-julio-Bebidas-Moleculares">10 julio 2:00 p.m</option>
+                            <option value="11-julio-Bebidas-Moleculares">11 julio 2:00 p.m</option>
+                            <option value="12-julio-Bebidas-Moleculares">12 julio 2:00 p.m</option>
+                        </optgroup>
+
+                        <optgroup label="Mocteles y más">
+                            <option value="10-julio-Mocteles-y-mas">10 julio 4:00 p.m</option>
+                            <option value="11-julio-Mocteles-y-mas">11 julio 4:00 p.m</option>
+                            <option value="12-julio-Mocteles-y-mas">12 julio 4:00 p.m</option>
+                        </optgroup>
+
+                        <optgroup label="Brew Bar">
+                            <option value="10-julio-Brew-Bar">10 julio 6:00 p.m</option>
+                            <option value="11-julio-Brew-Bar">11 julio 6:00 p.m</option>
+                            <option value="12-julio-Brew-Bar">12 julio 6:00 p.m</option>
+                        </optgroup>
+
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sucursal   v-model="formData.sucursal" required
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3" hidden>
+                    <label for="sucursal">Sucursal</label>
+                    <select class="form-control px-3" id="sucursal" >
+                        <option value="" selected disabled>Selecciona una sucursal</option>
+                        <option value="default">Cancún</option>
+                        <option value="Puebla">Puebla</option>
+                    </select>
+                -->
+
+                  <div class="col-xs-3 mx-2">
+                    <input type="hidden"  v-model="formData.sucursal" id="sucursal" name="sucursal"  value="CANCUN" >
+                </div>
+           
+            <!-- Observaciones                      -->
+            <div class="col-xs-3 mx-2">
+                <div class="form-group mb-3">
+                    <label for="message">Observaciones</label>
+                    <textarea  v-model="formData.message" class="form-control" id="message" placeholder="Comentarios"
+                        required>
+                    </textarea>
+                    <span v-if="errors.message" sclass="text-danger">{{ errors.message }}</span>
+                </div>
+            </div>
+
+            
+
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Checkbox de suscribirse Newsletter -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="inputNewsletter"
+                                v-model="formData.newsletter" checked>
+                            <label class="form-check-label" for="inputNewsletter">Suscríbete a nuestro
+                                newsletter</label>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Botón de enviar -->
+                        <button type="submit" class="btn btn-primary" id="botonenviar"
+                            @click.prevent="submitForm($event)">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <footer class="container-fluid">
+        <div class="text-center">
+            <a href="https://cafeetrusca.com/aviso-de-privacidad" target="_blank" class="aviso">Consulta
+                nuestro aviso
+                de privacidad</a>
+        </div>
+    </footer>
+
+    
+    <!-- Library para íconos-->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Código de Javascript -->
+    <!-- <script src="index.js?v=1.00000000111111913"></script> -->
+
+    <script type="text/javascript"
+        src="https://api.clientify.net/web-marketing/webforms/external/script/230797.js"></script>
+
+
+    <script>
+       
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    formData: {
+                        user_id: "",
+                        first_name: "", 
+                        fatherlastname: "",// solo esta activo este campo para los dos apellidos
+                        motherlastname: "",
+                        telephone: "",
+                        email: "",
+                        estado: "", // 
+                        codigopostal: "",
+                        ciudad: "",
+                        productos: [],
+                        tipo_negocio: "",
+                        name_negocio: "",
+                        message: "",
+                        newsletter: true,
+                        curso: "",
+                        expo: ""
+                    },
+                    errors: {},
+                };
+            },
+
+            methods: {
+
+            
+
+                validateForm() {
+                    const botonen = document.getElementById('botonenviar');
+                    
+                   
+
+                    this.errors = {};
+                    let valid = true;
+
+                    if (!this.formData.first_name) {
+                        this.errors.first_name = '* El nombre es obligatorio.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('first_name').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    }
+                    if (!this.formData.fatherlastname) {  
+                        this.errors.fatherlastname = '* El apellido es obligatorio.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('fatherlastname').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    if (!this.formData.telephone || !/^\d{10}$/.test(this.formData.telephone)) {
+                        this.errors.telephone = '* El teléfono debe contener 10 dígitos.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('telephone').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    if (!this.formData.ciudad) {
+                        this.errors.ciudad = '* La ciudad es obligatoria.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('ciudad').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    if (!this.formData.estado) {
+                        this.errors.estado = '* El estado es obligatorio.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('estado').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    if (!this.formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.formData.email) ) {
+                        this.errors.email = '* Ingrese un email valido.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('email').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    if (!this.formData.codigopostal || !/^\d{5}$/.test(this.formData.codigopostal)) {
+                        this.errors.codigopostal = ' * El código postal debe tener 5 dígitos.';
+                        valid = false;
+                        botonen.disabled = false;
+                        document.getElementById('codigopostal').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return valid;
+
+                },
+
+                
+
+
+                submitForm(event) {
+                 
+                    this.formData.expo = "cancun";
+                    
+                     
+
+                    this.formData.productos = [];
+
+                    if (document.getElementById('insumos').checked) this.formData.productos.push("Insumos");
+                    if (document.getElementById('accesorios').checked) this.formData.productos.push("Accesorios");
+                    if (document.getElementById('maquinas').checked) this.formData.productos.push("Máquinas");
+                    if (document.getElementById('cursos').checked) this.formData.productos.push("Cursos y Talleres");
+
+                    const botonen = document.getElementById('botonenviar')
+                    botonen.disabled = true;
+                    
+                    event.preventDefault(); // Evita el envío predeterminado del formulario
+                    
+                   
+
+                    if (this.validateForm()) {
+
+                       Swal.fire({ //Muestra el loading hasta que den la respuesta y se active un nuevo Swal con el success o el error
+                            title: "Cargando...",
+                            text: "Por favor espere",
+                            imageUrl: "https://www.epgdlaw.com/wp-content/uploads/2017/09/ajax-loader.gif",
+                            showConfirmButton: false,
+                            allowOutsideClick: false
+                        });
+                        
+
+
+                        fetch('https://cafeetrusca.com/api/newsLetter', {
+                        method: "POST",
+                        body: JSON.stringify(this.formData),
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                        })
+                        .then(response => {
+                            botonen.disabled = false;
+                        
+                        if (response.ok) {
+                            Swal.fire({
+                            icon: 'success',
+                            title: 'Registro exitoso',
+                            text: 'Tu formulario fue enviado correctamente.',
+                            }).then(() => {
+                            location.reload();
+                            });
+                        } else {
+                            throw new Error('Error en la respuesta');
+                        }
+                        })
+                        .catch(() => {
+                        
+                        botonen.disabled = false;
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Ocurrió un error al enviar el formulario.',
+                        });
+                        });
+                    }
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+
+   
+    
+
+</body>
