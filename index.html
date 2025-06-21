@@ -63,8 +63,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
             <div class="col-xs-3 mx-2">
                 <div class="form-group mb-3">
                     <label for="codigopostal">Código Postal</label>
-                    <input type="text" v-model="formData.codigopostal" @blur=BuscarCodigoPostal($event)
-                        class="form-control" id="codigopostal" placeholder="5 dígitos" pattern="[0-9]{5}" required>
+                    <input type="text" v-model="formData.codigopostal" v-on:keyup="BuscarCodigoPostal"
+                        class="form-control" id="codigopostal" placeholder="5 dígitos" pattern="[0-9]{5}" maxlength="5" required>
                     <span v-if="errors.codigopostal" class="text-danger">{{ errors.codigopostal }}</span>
                 </div>
             </div>
@@ -353,7 +353,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                 },
 
                 BuscarCodigoPostal(event) {
-                const codigoPostal = event.target.value;
+                
+                 const codigoPostal = this.formData.codigopostal;
+                
                 const ciudadInput = document.getElementById('ciudad');
                 const estadoInput = document.getElementById('estado');
 
