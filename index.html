@@ -358,7 +358,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css
                 
                 const ciudadInput = document.getElementById('ciudad');
                 const estadoInput = document.getElementById('estado');
-
+                    console.log('Código postal ingresado:', codigoPostal);
                 if (codigoPostal.length === 5) {
                     fetch('https://cafeetrusca.com/api/CodigoPostal/' + codigoPostal, {
                         method: 'GET',
